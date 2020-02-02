@@ -11,7 +11,7 @@ const ab = require('../public/javascripts/sc')
 /* GET home page. */
 router.get('/', function(req, res, next) {
  const pathToFile = './data/outdata/exchangeRates.xml';
-  const file = fs.createWriteStream(pathToFile);
+ const file = fs.createWriteStream(pathToFile);
  const request = https.get(
       'https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml',
       function(response) {
@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
 
 
   fs.readFile(pathToFile, function(err, data) {
-      console.log(data.values()));
+
 
     var parser = new xml2js.Parser(/* options */);
     parser.parseStringPromise(data,{rootName: "Cube"}).then(function (result) {
